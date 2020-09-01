@@ -1,0 +1,22 @@
+apiVersion: v2
+name: sonatype-nexus
+description: Sonatype Nexus is an open source repository manager
+type: application
+# This is the chart version
+version: 0.1.0
+# This is the version number of the application being deployed
+appVersion: 3.26.1
+keywords:
+  - artifacts
+  - dependency
+  - management
+  - nexus
+  - repository
+  - sonatype
+home: https://www.sonatype.com/nexus-repository-oss
+icon: http://www.sonatype.org/nexus/content/uploads/2015/06/Nexus-Logo.jpg
+sources:
+  - https://github.com/sonatype/nexus-public
+maintainers:
+  - name: Adam Rush
+    email: adamrushuk@gmail.com

@@ -1,0 +1,18 @@
+1. Application URLs:
+
+{{- if .Values.ingress.enabled }}
+  {{- range $host := .Values.ingress.tls }}
+    {{- range .hosts }}
+    http{{ if $.Values.ingress.tls }}s{{ end }}://{{ $host.host }}{{ . }}
+    {{- end }}
+  {{- end }}
+{{- end }}
+
+
+2. Get Nexus admin password by running these commands:
+
+  # Get pod name
+  export POD_NAME=$(kubectl get pods --namespace {{ .Release.Namespace }} -l "app.kubernetes.io/name={{ include "sonatype-nexus.name" . }},app.kubernetes.io/instance={{ .Release.Name }}" -o jsonpath="{.items[0].metadata.name}")
+
+  # Get admin password from pod
+  echo $(kubectl exec --namespace {{ .Release.Namespace }} -it $POD_NAME -- cat /nexus-data/admin.password)
