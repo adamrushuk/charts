@@ -2,6 +2,11 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+baseDomain: domain.com
+
+# certEmail is a valid email address used by Let's Encrypt. It does not have to be at the baseDomain.
+certEmail: certadmin@domain.com
+
 replicaCount: 1
 
 image:
@@ -27,28 +32,10 @@ ingress:
     nginx.org/hsts: "false"
     # fixes "413 Request Entity Too Large" error when pushing docker images
     nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    # "letsencrypt-staging" or "letsencrypt-prod"
+    cert-manager.io/cluster-issuer: letsencrypt-staging
   tls:
-    - hosts:
-        - nexus.domain.com
-        - docker-nexus.domain.com
-      secretName: nexus-secret
-  rules:
-  # http-web
-  - host: nexus.domain.com
-    http:
-      paths:
-      - backend:
-          serviceName: sonatype-nexus
-          servicePort: 8081
-        path: /
-  # http-docker
-  - host: docker-nexus.domain.com
-    http:
-      paths:
-      - backend:
-          serviceName: sonatype-nexus
-          servicePort: 5000
-        path: /
+    secretName: tls-secret
 
 imagePullSecrets: []
 nameOverride: ""
