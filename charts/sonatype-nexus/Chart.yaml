@@ -18,5 +18,5 @@ icon: http://www.sonatype.org/nexus/content/uploads/2015/06/Nexus-Logo.jpg
 sources:
   - https://github.com/sonatype/nexus-public
 maintainers:
-  - name: Adam Rush
+  - name: adamrushuk
     email: adamrushuk@gmail.com
