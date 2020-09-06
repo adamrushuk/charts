@@ -5,7 +5,8 @@ metadata:
   labels:
     {{- include "sonatype-nexus.labels" . | nindent 4 }}
 spec:
-  replicas: {{ .Values.replicaCount }}
+  # hard-code 1 replica
+  replicas: 1
   serviceName: {{ include "sonatype-nexus.fullname" . }}
   selector:
     matchLabels:
