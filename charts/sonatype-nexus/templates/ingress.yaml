@@ -27,13 +27,13 @@ spec:
       paths:
       - path: /
         backend:
-          serviceName: {{ template "fullname" . }}
+          serviceName: {{ $fullName }}
           servicePort: {{ .Values.nexus.nexusPort }}
   - host: docker.{{ .Values.baseDomain }}
     http:
       paths:
       - path: /
         backend:
-          serviceName: {{ template "fullname" . }}
+          serviceName: {{ $fullName }}
           servicePort: {{ .Values.nexus.dockerPort }}
----
+  {{- end }}

@@ -1,11 +1,7 @@
-1. Application URLs:
+1. Application URL:
 
 {{- if .Values.ingress.enabled }}
-  {{- range $host := .Values.ingress.tls }}
-    {{- range .hosts }}
-    http{{ if $.Values.ingress.tls }}s{{ end }}://{{ $host.host }}{{ . }}
-    {{- end }}
-  {{- end }}
+    http{{ if $.Values.ingress.tls }}s{{ end }}://nexus.{{ .Values.baseDomain }}
 {{- end }}
 
 
