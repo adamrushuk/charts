@@ -19,7 +19,7 @@ jobs:
         uses: helm/chart-testing-action@v1.0.0
         with:
           command: lint
-          config: .github/ct.yaml
+          config: ./.github/ct.yaml
 
       # https://github.com/helm/kind-action
       - name: Create kind cluster
@@ -32,4 +32,4 @@ jobs:
         uses: helm/chart-testing-action@v1.0.0
         with:
           command: install
-          config: .github/ct.yaml
+          config: ./.github/ct.yaml
