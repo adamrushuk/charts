@@ -6,7 +6,7 @@ nexus:
   baseDomain: domain.com
   # certEmail is a valid email address used by Let's Encrypt. It does not have to be at the baseDomain.
   certEmail: certadmin@domain.com
-  storageSize: 10Gi
+  storageSize: 8Gi
   # The ports should only be changed if the nexus image uses a different port
   dockerPort: 5000
   nexusPort: 8081
