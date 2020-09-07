@@ -5,7 +5,8 @@ metadata:
   labels:
     {{- include "sonatype-nexus.labels" . | nindent 4 }}
 spec:
-  replicas: {{ .Values.replicaCount }}
+  # hard-code 1 replica
+  replicas: 1
   serviceName: {{ include "sonatype-nexus.fullname" . }}
   selector:
     matchLabels:
@@ -76,7 +77,7 @@ spec:
       name: {{ template "sonatype-nexus.fullname" . }}-data
     spec:
       accessModes: [ "ReadWriteOnce" ]
-      storageClassName: default
+      storageClassName: ""
       resources:
         requests:
           # minimum is 4Gi, but 8Gi recommended during testing

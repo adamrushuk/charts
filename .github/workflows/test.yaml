@@ -1,0 +1,27 @@
+name: Test Workflow
+
+on:
+  # enable manual workflow
+  # https://docs.github.com/en/actions/configuring-and-managing-workflows/configuring-a-workflow#manually-running-a-workflow
+  workflow_dispatch:
+    inputs: {}
+
+jobs:
+  lint-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      # https://github.com/helm/kind-action
+      - name: Create kind cluster
+        uses: helm/kind-action@v1.0.0
+        with:
+          # https://kind.sigs.k8s.io/docs/user/quick-start/#configuring-your-kind-cluster
+          # config: ./.github/kind.yaml
+          log_level: info
+
+      - name: Test
+        run: |
+          kubectl cluster-info
+          kubectl get storageclass

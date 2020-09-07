@@ -2,12 +2,14 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-baseDomain: domain.com
-
-# certEmail is a valid email address used by Let's Encrypt. It does not have to be at the baseDomain.
-certEmail: certadmin@domain.com
-
-replicaCount: 1
+nexus:
+  baseDomain: domain.com
+  # certEmail is a valid email address used by Let's Encrypt. It does not have to be at the baseDomain.
+  certEmail: certadmin@domain.com
+  storageSize: 10Gi
+  # The ports should only be changed if the nexus image uses a different port
+  dockerPort: 5000
+  nexusPort: 8081
 
 image:
   repository: sonatype/nexus3
@@ -15,27 +17,19 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: "3.27.0"
 
-nexus:
-  storageSize: 10Gi
-  # The ports should only be changed if the nexus image uses a different port
-  dockerPort: 5000
-  nexusPort: 8081
+ingress:
+  enabled: false
+  # use "staging" environment during testing to avoid rate limiting
+  # https://letsencrypt.org/docs/staging-environment/#rate-limits
+  # "staging" or "production"
+  letsencryptEnvironment: "staging"
+  annotations:
+    nginx.org/hsts: "false"
+  tls:
+    secretName: tls-secret
 
 service:
   type: ClusterIP
-
-ingress:
-  enabled: true
-  annotations:
-    # kubernetes.io/tls-acme: "true"
-    kubernetes.io/ingress.class: nginx
-    nginx.org/hsts: "false"
-    # fixes "413 Request Entity Too Large" error when pushing docker images
-    nginx.ingress.kubernetes.io/proxy-body-size: "0"
-    # "letsencrypt-staging" or "letsencrypt-prod"
-    cert-manager.io/cluster-issuer: letsencrypt-staging
-  tls:
-    secretName: tls-secret
 
 imagePullSecrets: []
 nameOverride: ""
