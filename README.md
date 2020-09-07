@@ -1,3 +1,5 @@
 # adamrushuk Helm Charts Repository
 
-Welcome to the adamrushuk Helm charts repository. All charts are in the charts directory.
+Point Helm at this repository to access adamrushuk's helm charts
+
+helm repo add adamrushukcharts https://adamrushuk.github.io/charts
