@@ -77,7 +77,8 @@ spec:
       name: {{ template "sonatype-nexus.fullname" . }}-data
     spec:
       accessModes: [ "ReadWriteOnce" ]
-      storageClassName: ""
+      # GitHub Action helm/kind-action uses: storageClassName: "standard"
+      # storageClassName: ""
       resources:
         requests:
           # minimum is 4Gi, but 8Gi recommended during testing
