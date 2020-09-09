@@ -11,6 +11,7 @@ nexus:
   dockerPort: 5000
   nexusPort: 8081
 
+# https://hub.docker.com/r/sonatype/nexus3/tags
 image:
   repository: sonatype/nexus3
   pullPolicy: IfNotPresent

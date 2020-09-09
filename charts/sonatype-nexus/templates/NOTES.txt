@@ -1,9 +1,14 @@
 1. Application URL:
 
 {{- if .Values.ingress.enabled }}
-    http{{ if $.Values.ingress.tls }}s{{ end }}://nexus.{{ .Values.nexus.baseDomain }}
-{{- end }}
+  http{{ if $.Values.ingress.tls }}s{{ end }}://nexus.{{ .Values.nexus.baseDomain }}
+{{- else }}
+  Run the command below to port-forward for local access:
 
+  kubectl port-forward --namespace {{ .Release.Namespace }} svc/{{ include "sonatype-nexus.fullname" . }} {{ .Values.nexus.nexusPort }}:{{ .Values.nexus.nexusPort }}
+
+  then navigate to: http://localhost:{{ .Values.nexus.nexusPort }}/
+{{- end }}
 
 2. Get Nexus admin password by running these commands:
 
