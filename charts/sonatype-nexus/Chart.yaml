@@ -3,7 +3,7 @@ name: sonatype-nexus
 description: Sonatype Nexus is an open source repository manager
 type: application
 # This is the chart version
-version: 0.2.3
+version: 0.2.4
 # This is the version number of the application being deployed
 appVersion: 3.27.0
 keywords:
@@ -17,6 +17,7 @@ home: https://www.sonatype.com/nexus-repository-oss
 icon: http://www.sonatype.org/nexus/content/uploads/2015/06/Nexus-Logo.jpg
 sources:
   - https://github.com/sonatype/nexus-public
+  - https://hub.docker.com/r/sonatype/nexus3/tags
 maintainers:
   - name: adamrushuk
     email: adamrushuk@gmail.com
