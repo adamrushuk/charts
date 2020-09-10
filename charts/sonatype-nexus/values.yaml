@@ -22,7 +22,7 @@ ingress:
   enabled: false
   # use "staging" environment during testing to avoid rate limiting
   # https://letsencrypt.org/docs/staging-environment/#rate-limits
-  # "staging" or "production"
+  # "staging" or "prod"
   letsencryptEnvironment: "staging"
   annotations:
     nginx.org/hsts: "false"
