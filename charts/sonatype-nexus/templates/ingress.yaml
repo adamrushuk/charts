@@ -13,7 +13,7 @@ metadata:
     {{- include "sonatype-nexus.labels" . | nindent 4 }}
   annotations:
     kubernetes.io/ingress.class: nginx
-  {{- if eq .Values.ingress.letsencryptEnvironment "production" }}
+  {{- if eq .Values.ingress.letsencryptEnvironment "prod" }}
     cert-manager.io/cluster-issuer: letsencrypt-prod
   {{- else }}
     cert-manager.io/cluster-issuer: letsencrypt-staging
