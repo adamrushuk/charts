@@ -60,3 +60,16 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{/*
+Return the proper Storage Class
+*/}}
+{{- define "nexus.storageClass" -}}
+{{- if .Values.nexus.storageClass -}}
+    {{- if (eq "-" .Values.nexus.storageClass) -}}
+        {{- printf "storageClassName: \"\"" -}}
+    {{- else }}
+        {{- printf "storageClassName: %s" .Values.nexus.storageClass -}}
+    {{- end -}}
+{{- end -}}
+{{- end }}
