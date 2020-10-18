@@ -32,10 +32,11 @@ image:
 
 ingress:
   enabled: false
+  certmanagerEnabled: false
   # use "staging" environment during testing to avoid rate limiting
   # https://letsencrypt.org/docs/staging-environment/#rate-limits
   # "staging" or "prod"
-  letsencryptEnvironment: "staging"
+  letsencryptEnvironment: ""
   annotations:
     nginx.org/hsts: "false"
   tls:
