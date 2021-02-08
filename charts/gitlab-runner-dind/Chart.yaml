@@ -21,3 +21,7 @@ dependencies:
 - name: gitlab-runner
   version: "0.24.0"
   repository: "https://charts.gitlab.io"
+
+maintainers:
+  - name: Adam Rush
+    email: adamrushuk@gmail.com
