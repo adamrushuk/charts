@@ -23,5 +23,5 @@ dependencies:
   repository: "https://charts.gitlab.io"
 
 maintainers:
-  - name: Adam Rush
+  - name: adamrushuk
     email: adamrushuk@gmail.com
