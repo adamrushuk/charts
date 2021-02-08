@@ -1,0 +1,27 @@
+# A wrapper chart for upstream GitLab Runner chart
+# https://github.com/argoproj/argocd-example-apps/tree/master/helm-dependency
+apiVersion: v2
+name: gitlab-runner-dind
+description: A Helm dependency chart for GitLab Runner, with Docker-in-Docker config
+type: application
+
+# This is the chart version. This version number should be incremented each time you make changes
+# to the chart and its templates, including the app version.
+# Versions are expected to follow Semantic Versioning (https://semver.org/)
+version: 0.1.0
+
+# This is the version number of the application being deployed. This version number should be
+# incremented each time you make changes to the application. Versions are not expected to
+# follow Semantic Versioning. They should reflect the version the application is using.
+# It is recommended to use it with quotes.
+appVersion: "0.24.0"
+
+# https://helm.sh/docs/helm/helm_dependency/
+dependencies:
+- name: gitlab-runner
+  version: "0.24.0"
+  repository: "https://charts.gitlab.io"
+
+maintainers:
+  - name: adamrushuk
+    email: adamrushuk@gmail.com
