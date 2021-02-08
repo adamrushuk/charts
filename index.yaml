@@ -1,5 +1,24 @@
 apiVersion: v1
 entries:
+  gitlab-runner-dind:
+  - apiVersion: v2
+    appVersion: 0.24.0
+    created: "2021-02-08T08:22:30.694360157Z"
+    dependencies:
+    - name: gitlab-runner
+      repository: https://charts.gitlab.io
+      version: 0.24.0
+    description: A Helm dependency chart for GitLab Runner, with Docker-in-Docker
+      config
+    digest: dc5974c14a2907fa5cfe976f97d0b1cdda7ee456ddb12c7367134998c15d95fa
+    maintainers:
+    - email: adamrushuk@gmail.com
+      name: adamrushuk
+    name: gitlab-runner-dind
+    type: application
+    urls:
+    - https://github.com/adamrushuk/charts/releases/download/gitlab-runner-dind-0.1.0/gitlab-runner-dind-0.1.0.tgz
+    version: 0.1.0
   sonatype-nexus:
   - apiVersion: v2
     appVersion: 3.28.1
