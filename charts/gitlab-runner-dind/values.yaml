@@ -1,0 +1,50 @@
+# https://gitlab.com/gitlab-org/charts/gitlab-runner/-/blob/0-24-0-stable/values.yaml
+# https://docs.gitlab.com/ee/ci/docker/using_docker_build.html#kubernetes
+#
+# Docker-in-Docker (DinD) config to support installing KinD nodes
+
+# ! IMPORTANT: to override subchart values, you must add the subchart name as the root level value, then indent original values:
+gitlab-runner:
+
+  image: gitlab/gitlab-runner:alpine-v13.7.0
+  gitlabUrl: https://gitlab.thehypepipe.co.uk/
+
+  # get token from: https://<GITLAB_FQDN>/admin/runners
+  runnerRegistrationToken: "raQgKr89tiGuusxrPzgk"
+
+  unregisterRunners: true
+
+  ## For RBAC support:
+  rbac:
+    create: true
+    # Define specific rbac permissions.
+    resources: ["pods", "pods/exec", "secrets"]
+    verbs: ["get", "list", "watch", "create", "patch", "delete"]
+
+  # Main runner config
+  # https://docs.gitlab.com/ee/ci/docker/using_docker_build.html#kubernetes
+  # add volumes
+  # https://docs.gitlab.com/runner/executors/kubernetes.html#using-volumes
+  runners:
+    config: |
+      [[runners]]
+        [runners.kubernetes]
+          image = "ubuntu:20.04"
+          privileged = true
+        [[runners.kubernetes.volumes.empty_dir]]
+          name = "docker-certs"
+          mount_path = "/certs/client"
+          medium = "Memory"
+        [[runners.kubernetes.volumes.empty_dir]]
+          name = "dind-storage"
+          mount_path = "/var/lib/docker"
+        [[runners.kubernetes.volumes.host_path]]
+          name = "hostpath-modules"
+          mount_path = "/lib/modules"
+          read_only = true
+          host_path = "/lib/modules"
+        [[runners.kubernetes.volumes.host_path]]
+          name = "hostpath-cgroup"
+          mount_path = "/sys/fs/cgroup"
+          host_path = "/sys/fs/cgroup"
+    tags: "dind"
