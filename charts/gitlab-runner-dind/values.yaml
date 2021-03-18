@@ -10,7 +10,7 @@ gitlab-runner:
   gitlabUrl: https://gitlab.thehypepipe.co.uk/
 
   # get token from: https://<GITLAB_FQDN>/admin/runners
-  runnerRegistrationToken: "raQgKr89tiGuusxrPzgk"
+  runnerRegistrationToken: "vmsaSu7mgmVz3KRSqx7i"
 
   unregisterRunners: true
 
