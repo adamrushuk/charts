@@ -22,6 +22,31 @@ entries:
   sonatype-nexus:
   - apiVersion: v2
     appVersion: 3.42.0
+    created: "2022-10-19T10:55:27.890109756Z"
+    description: Sonatype Nexus is an open source repository manager
+    digest: 44eabcf582817e967429ac2d61c7c6353a619de112e251f4d3930e7f9a6d8d3f
+    home: https://www.sonatype.com/nexus-repository-oss
+    icon: http://www.sonatype.org/nexus/content/uploads/2015/06/Nexus-Logo.jpg
+    keywords:
+    - artifacts
+    - dependency
+    - management
+    - nexus
+    - repository
+    - sonatype
+    maintainers:
+    - email: adamrushuk@gmail.com
+      name: adamrushuk
+    name: sonatype-nexus
+    sources:
+    - https://github.com/sonatype/nexus-public
+    - https://hub.docker.com/r/sonatype/nexus3/tags
+    type: application
+    urls:
+    - https://github.com/adamrushuk/charts/releases/download/sonatype-nexus-0.3.1/sonatype-nexus-0.3.1.tgz
+    version: 0.3.1
+  - apiVersion: v2
+    appVersion: 3.42.0
     created: "2022-10-19T07:51:44.94655799Z"
     description: Sonatype Nexus is an open source repository manager
     digest: d86e56bf80a08d81bf392f8520e2427fd7bd672294d9fe73188841bf83c3d9f1
@@ -194,4 +219,4 @@ entries:
     urls:
     - https://github.com/adamrushuk/charts/releases/download/sonatype-nexus-0.2.3/sonatype-nexus-0.2.3.tgz
     version: 0.2.3
-generated: "2022-10-19T07:51:44.94662679Z"
+generated: "2022-10-19T10:55:27.890135956Z"
