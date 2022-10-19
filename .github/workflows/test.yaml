@@ -15,7 +15,7 @@ jobs:
 
       # https://github.com/helm/kind-action
       - name: Create kind cluster
-        uses: helm/kind-action@v2.0.1
+        uses: helm/kind-action@v1.4.0
         with:
           # https://kind.sigs.k8s.io/docs/user/quick-start/#configuring-your-kind-cluster
           # config: ./.github/kind.yaml
