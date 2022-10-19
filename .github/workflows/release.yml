@@ -1,3 +1,4 @@
+# https://github.com/helm/chart-releaser-action#example-workflow
 name: Release Charts
 
 on:
@@ -7,13 +8,16 @@ on:
 
 jobs:
   release:
+    # depending on default permission settings for your org (contents being read-only or read-write for workloads), you will have to add permissions
+    # see: https://docs.github.com/en/actions/security-guides/automatic-token-authentication#modifying-the-permissions-for-the-github_token
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
-      - name: Fetch history
-        run: git fetch --prune --unshallow
+        with:
+          fetch-depth: 0
 
       - name: Configure Git
         run: |
@@ -25,8 +29,7 @@ jobs:
         with:
           version: v3.10.0
 
-      # https://github.com/helm/chart-releaser-action/releases
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.4.1
         env:
-          CR_TOKEN: "${{ secrets.GITHUB_TOKEN  }}"
+          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
